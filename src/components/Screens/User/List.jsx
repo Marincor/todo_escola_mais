@@ -1,6 +1,7 @@
 import { Logo, Container, Header, Icon } from "../../UI";
 import LogoImg from './../../../assets/img/logo.png'
 import TodoImg from '../../../assets/img/to do.jpg'
+import UserList from "../../User/List";
 
 export default function ScreensUserList() {
   return (
@@ -13,7 +14,11 @@ export default function ScreensUserList() {
             <Icon src={TodoImg} alt="toDo-icon" />
         </a>
       </Header>
-      <Container>teste screensuserlist</Container>
+      <Container>
+
+      user list:
+      <UserList />
+      </Container>
     </>
   );
 }

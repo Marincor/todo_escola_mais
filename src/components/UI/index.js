@@ -8,7 +8,11 @@ export const Container = styled.section`
   min-height: 100vh;
   height: auto;
   width: 100%;
-  padding: 2rem 0rem;
+  padding: 3rem 0rem;
+  background-image: url(${(props) => (props.bg ? props.bg : false)});
+  background-size: cover;
+  background-position: center;
+background-attachment: fixed;
 `;
 
 export const Header = styled.header`
@@ -45,7 +49,7 @@ export const Button = styled.button`
     background-color: rgb(255, 237, 0);
     color: rgb(0, 0, 112);
   }
-  
+
   :active {
     background-color: rgb(0, 159, 227);
   }

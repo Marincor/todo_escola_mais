@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { UserListContext } from "../../contexts/User/list";
 import { Button, Container } from "../UI";
 import { List, ListItem, TitleUserList, Username } from "./styles";
@@ -10,7 +11,7 @@ export default function UserList() {
 
   // counting the amount of users //
 
-  function renderList() {
+  function getAmountUsers() {
     let count = 0;
 
     while (count < userList.length) {
@@ -24,7 +25,7 @@ export default function UserList() {
     }
   }
 
-  renderList();
+  getAmountUsers();
   console.log(numberOfUsers);
 
   // creating array to the amount of users //
@@ -40,7 +41,10 @@ export default function UserList() {
           return (
             <ListItem key={`user - ${index}`}>
               <Username> 👤 Usuário {index + 1}</Username>
-              <Button>Tarefas do usuário</Button>
+
+              <Link className="link" to={`/user/${index + 1}`}>
+                <Button>Tarefas do usuário</Button>
+              </Link>
             </ListItem>
           );
         })}

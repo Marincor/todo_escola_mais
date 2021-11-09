@@ -53,4 +53,6 @@ export const Button = styled.button`
   :active {
     background-color: rgb(0, 159, 227);
   }
+
+  
 `;

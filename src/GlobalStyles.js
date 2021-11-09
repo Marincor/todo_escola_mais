@@ -21,6 +21,12 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+
+	.link {
+
+text-decoration: none;
+color: white;
+}
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 

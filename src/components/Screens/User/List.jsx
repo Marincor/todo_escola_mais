@@ -13,7 +13,7 @@ export default function ScreensUserList() {
           <Icon src={TodoImg} alt="toDo-icon" />
         </a>
       </Header>
-      <Container bg={Backgrounds[4]}>
+      <Container bg={Backgrounds[2]}>
         <UserList />
       </Container>
     </>

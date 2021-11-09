@@ -7,12 +7,12 @@ UserIdContext.displayName = "User Id";
 
 export const UserIdProvider = (props) => {
   const [userId, setUserId] = useState();
-  const {id} = useParams()
+  const [userInfo, setUserInfo] = useState()
 
   
 
   return (
-    <UserIdContext.Provider value={{ userId, setUserId }}>
+    <UserIdContext.Provider value={{ userId, setUserId, userInfo, setUserInfo }}>
       {props.children}
     </UserIdContext.Provider>
   );

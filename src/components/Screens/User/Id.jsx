@@ -6,6 +6,7 @@ import { useParams } from "react-router";
 import { useContext, useEffect } from "react";
 import { UserIdContext } from "../../../contexts/User/id";
 import { UserListContext } from "../../../contexts/User/list";
+import UserId from "../../User/Id";
 
 export default function ScreensUserId() {
   const { id } = useParams();
@@ -20,9 +21,12 @@ export default function ScreensUserId() {
     setUserId(id);
   }, []);
 
+
+  // checking if the user exist //
+  
   const currentUserExist = userList.find((user) => user.userId === +userId);
 
-  console.log(currentUserExist);
+
 
   return (
     <>
@@ -33,7 +37,7 @@ export default function ScreensUserId() {
         </a>
       </Header>
       <Container bg={Backgrounds[3]}>
-        {currentUserExist ? id : "erro"}
+        {currentUserExist ? <UserId id={id} /> : "erro"}
       </Container>
     </>
   );

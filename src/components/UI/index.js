@@ -8,9 +8,11 @@ export const Container = styled.section`
   min-height: 100vh;
   height: auto;
   width: 100%;
-  padding: 3rem 0rem;
+  padding: 3rem 0rem 0rem 0rem;
   background-image: url(${(props) => (props.bg ? props.bg : false)});
   background-size: cover;
+  background-color: rgba(255,255,255, 0.1);
+  background-blend-mode: color;
   background-position: center;
 background-attachment: fixed;
 `;

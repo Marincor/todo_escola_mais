@@ -26,7 +26,7 @@ export default function UserList() {
   }
 
   getAmountUsers();
-  console.log(numberOfUsers);
+
 
   // creating array to the amount of users //
 

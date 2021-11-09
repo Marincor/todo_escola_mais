@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 
 
-export default function ScreensRoot(props) {
+export default function ScreensRoot() {
   
   return (
     <>

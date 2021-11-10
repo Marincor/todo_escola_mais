@@ -179,18 +179,18 @@ font-family: "Raleway", sans-serif;
 `
 
 export const Input = styled.input`
-  background-color: rgb(47, 51, 141);
+  background-color: rgba(47, 51, 141, 0.5);
   width: 35%;
   border-radius: 2rem;
   padding: 1rem;
   margin: 1rem;
   font-family: "Raleway", sans-serif;
   color: #ffffff;
-  border: 1px solid #ffffff;
+  border: 1px solid black;
   outline: none;
 
   ::placeholder {
-    color: darkgray;
+    color: black;
   }
 
   :hover {

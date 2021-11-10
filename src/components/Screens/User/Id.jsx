@@ -29,7 +29,7 @@ export default function ScreensUserId() {
     }, 2000);
 
 
-  }, []);
+  },[id]);
 
   // checking if the user exist //
 

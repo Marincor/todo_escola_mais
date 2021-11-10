@@ -9,25 +9,25 @@ UserListContext.displayName = "User List";
 
 export const UserListProvider = (props) => {
   const [userList, setUserList] = useState([]);
-  const {loading, setLoading} = useContext(LoadingContext)
+  const { loading, setLoading } = useContext(LoadingContext);
 
-  console.log(loading)
   useEffect(() => {
-
     // api request //
     try {
-      setLoading(true)
+      setLoading(true);
       getListUser().then((res) => setUserList(res));
     } catch (error) {
       console.log(error);
     } finally {
-  
-        setTimeout(() => {
-          setLoading(false)
-        }, 2000);
-
+      setTimeout(() => {
+        setLoading(false);
+      }, 2000);
     }
   }, []);
 
-  return <UserListContext.Provider value={{userList, setUserList}}>{props.children}</UserListContext.Provider>;
+  return (
+    <UserListContext.Provider value={{ userList, setUserList }}>
+      {props.children}
+    </UserListContext.Provider>
+  );
 };

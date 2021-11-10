@@ -22,29 +22,23 @@ import {
 } from "./styles";
 
 export default function UserId({ id }) {
-
-  const {setLoading} = useContext(LoadingContext)
+  const { setLoading } = useContext(LoadingContext);
   // context of task's of current user //
   const { userInfo, setUserInfo } = useContext(UserIdContext);
 
   // context of new task //
   const { task, setTask } = useContext(NewTaskUserContext);
 
-  console.log(userInfo);
-
   useEffect(() => {
     // api request, getting user by Id //
 
     try {
-     
       getUserById(id).then((res) => setUserInfo(res));
     } catch (error) {
       console.log(error);
     } finally {
-
       setTimeout(() => {
-        
-        setLoading(false)
+        setLoading(false);
       }, 2000);
     }
   }, [id]);
@@ -88,9 +82,9 @@ export default function UserId({ id }) {
       </form>
       <TitleUserId> Tarefas do usuário {id}: </TitleUserId>
       <ListTask>
-        {userInfo?.map((task) => {
+        {userInfo?.map((task, index) => {
           return (
-            <ItemTask>
+            <ItemTask key={`${task} + ${index}`}>
               <ButtonDone
                 onClick={(e) => {
                   e.preventDefault();

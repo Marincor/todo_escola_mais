@@ -1,13 +1,14 @@
 import { useContext, useEffect } from "react";
 import { UserIdContext } from "../../contexts/User/id";
+import { NewTaskUserContext } from "../../contexts/User/newTask";
 import getUserById from "../../services/User/id";
-import { Button, Container } from "../UI";
+import createTask from "../../services/User/newTask";
+import { Container } from "../UI";
 import {
   ButtonDone,
   ButtonForm,
   ButtonTask,
   Fieldset,
-  Form,
   Input,
   ItemTask,
   Legend,
@@ -19,6 +20,7 @@ import {
 
 export default function UserId({ id }) {
   const { userInfo, setUserInfo } = useContext(UserIdContext);
+  const { task, setTask } = useContext(NewTaskUserContext);
 
   useEffect(() => {
     // api request, getting user by id //
@@ -33,15 +35,12 @@ export default function UserId({ id }) {
     }
   }, [id]);
 
-  console.log(userInfo);
-
   // show the task //
 
   function handleTask(e) {
     const task = e.target.nextElementSibling;
     const button = e.target;
 
-    console.log(button);
     if (task.classList.contains("showTask")) {
       task.classList.remove("showTask");
       button.textContent = "▼";
@@ -70,18 +69,62 @@ export default function UserId({ id }) {
       button.textContent = "pendenciar !";
       button.classList.add("undoneButton");
     }
+  }
 
-    console.log(taskTitle);
+  // create task //
+
+  function handleTask() {
+    createTask(task.title, task.body, task.id).then((json) => {
+      alert("Tarefa criada, cheque o console para confirmar!");
+
+      console.log(json);
+    });
+
+    const inputTitle = document.querySelector(`[data-input-title]`);
+    const inputBody = document.querySelector(`[data-input-body]`);
+
+    setTimeout(() => {
+      inputTitle.value = "";
+      inputBody.value = "";
+    }, 100);
+
+    console.log(inputTitle);
   }
 
   return (
     <Container>
-      <form>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+
+          handleTask();
+        }}
+      >
         <Fieldset>
           <Legend>Adicionar nova tarefa</Legend>
 
-          <Input type="text" placeholder="Título" />
-          <Input type="text" placeholder="Descrição" />
+          <Input
+            data-input-title
+            type="text"
+            placeholder="Título"
+            title="Escreva um título para sua tarefa"
+            required
+            value={task.title}
+            onChange={(e) => {
+              setTask({ ...task, title: e.target.value });
+            }}
+          />
+          <Input
+            data-input-body
+            type="text"
+            placeholder="Descrição"
+            title="Escreva uma descrição para sua tarefa"
+            required
+            value={task.body}
+            onChange={(e) => {
+              setTask({ ...task, body: e.target.value, id: +id });
+            }}
+          />
           <ButtonForm>Criar</ButtonForm>
         </Fieldset>
       </form>

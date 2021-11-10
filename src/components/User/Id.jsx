@@ -1,17 +1,15 @@
 import { useContext, useEffect } from "react";
 import { UserIdContext } from "../../contexts/User/id";
 import getUserById from "../../services/User/id";
-import { Container } from "../UI";
+import { Button, Container } from "../UI";
 import {
+  ButtonDone,
   ButtonTask,
   ItemTask,
-  List,
-  ListItem,
   ListTask,
   Task,
   TaskName,
-  TitleUserId,
-  Username,
+  TitleUserId
 } from "./styles";
 
 export default function UserId({ id }) {
@@ -37,7 +35,6 @@ export default function UserId({ id }) {
   function handleTask(e) {
     const task = e.target.nextElementSibling;
     const button = e.target;
-   
 
     console.log(button);
     if (task.classList.contains("showTask")) {
@@ -49,14 +46,63 @@ export default function UserId({ id }) {
     }
   }
 
+
+  // mark the task //
+
+  function taskStatus(e) {
+
+    const taskTitle = e.target.nextElementSibling;
+    const task = e.target.nextElementSibling.nextElementSibling.nextElementSibling;
+    const button = e.target;
+
+  
+  
+
+    if(taskTitle.classList.contains("done")) {
+
+      taskTitle.classList.remove("done");
+      task.classList.remove("done");
+      button.textContent = "concluído ✓";
+      button.classList.remove("undoneButton");
+
+    } else{
+
+      taskTitle.classList.add("done");
+      task.classList.add("done");
+      button.textContent = "pendente !";
+      button.classList.add("undoneButton");
+    }
+
+    console.log(taskTitle)
+
+  }
+
   return (
     <Container>
       <TitleUserId> Tarefas do usuário {id}: </TitleUserId>
+        <form>
+            <fieldset>
+              <legend>Adicionar nova tarefa</legend>
+
+              <input type="text" placeholder="Título" />
+              <input type="text" placeholder="Descrição" />
+              <button>criar</button>
+            </fieldset>
+
+        </form>
       <ListTask>
         {userInfo?.map((task) => {
           return (
             <ItemTask>
-              <TaskName>{task.title} </TaskName>
+              <ButtonDone onClick={(e)=>{e.preventDefault(); taskStatus(e)}}>
+                
+                
+                concluído ✓
+
+                
+                </ButtonDone>
+              <TaskName>{task.title}</TaskName>
+
               <ButtonTask
                 onClick={(e) => {
                   e.preventDefault();

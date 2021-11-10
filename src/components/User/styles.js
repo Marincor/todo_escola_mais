@@ -58,8 +58,10 @@ export const ListTask = styled.ul`
     width: 60%;
   }
 
+  // show the task //
+
   .showTask {
-    visibility: visible;
+    display: flex;
     animation: anime 0.6s;
   }
 
@@ -73,6 +75,23 @@ export const ListTask = styled.ul`
     100% {
       opacity: 1;
       transform: translate3d(0, 0, 0);
+    }
+  }
+
+  // done the task //
+
+  .done {
+    text-decoration: line-through;
+    text-shadow: 1px 1px 2px darkgray;
+  }
+
+  // undone button appears //
+
+  .undoneButton {
+    background-color: rgba(255, 237, 3, 0.5);
+
+    :hover {
+      background-color: lightyellow;
     }
   }
 `;
@@ -119,6 +138,20 @@ export const Task = styled.p`
   padding: 1rem 0.2rem;
   line-height: 1.2rem;
   text-transform: lowercase;
-  visibility: hidden;
+  display: none;
   background-color: lightgray;
+`;
+
+export const ButtonDone = styled.button`
+  width: 8rem;
+  padding: 0.4rem 0rem;
+  background-color: rgba(0, 148, 0, 0.5);
+  cursor: pointer;
+  border: none;
+  border-radius: 1rem;
+  font-family: "Raleway", sans-serif;
+
+  :hover {
+    background-color: lightgreen;
+  }
 `;

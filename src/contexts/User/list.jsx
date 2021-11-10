@@ -1,5 +1,7 @@
 import { createContext, useEffect, useState } from "react";
+import { useContext } from "react/cjs/react.development";
 import getListUser from "../../services/User/list";
+import { LoadingContext } from "../Loading";
 
 export const UserListContext = createContext();
 
@@ -7,17 +9,23 @@ UserListContext.displayName = "User List";
 
 export const UserListProvider = (props) => {
   const [userList, setUserList] = useState([]);
+  const {loading, setLoading} = useContext(LoadingContext)
 
+  console.log(loading)
   useEffect(() => {
 
     // api request //
     try {
-      console.log("loading");
+      setLoading(true)
       getListUser().then((res) => setUserList(res));
     } catch (error) {
       console.log(error);
     } finally {
-      console.log("loading off");
+  
+        setTimeout(() => {
+          setLoading(false)
+        }, 2000);
+
     }
   }, []);
 

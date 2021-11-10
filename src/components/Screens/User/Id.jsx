@@ -1,6 +1,4 @@
-import { Logo, Container, Header, Icon } from "../../UI";
-import LogoImg from "./../../../assets/img/logo.png";
-import TodoImg from "../../../assets/img/to do.jpg";
+import {  Container} from "../../UI";
 import { Backgrounds } from "../../UI/Backgrounds";
 import { useParams } from "react-router";
 import { useContext, useEffect } from "react";
@@ -29,16 +27,10 @@ export default function ScreensUserId() {
 
 
   return (
-    <>
-      <Header>
-        <a href="/">
-          <Logo src={LogoImg} alt="escola_mais-icon" title="escola mais" />
-          <Icon src={TodoImg} alt="toDo-icon" />
-        </a>
-      </Header>
-      <Container bg={Backgrounds[3]}>
+   
+      <Container bg={Backgrounds[2]}>
         {currentUserExist ? <UserId id={id} /> : "erro"}
       </Container>
-    </>
+  
   );
 }

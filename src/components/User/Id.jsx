@@ -1,51 +1,75 @@
-import { useContext, useEffect } from "react"
-import { UserIdContext } from "../../contexts/User/id"
-import getUserById from "../../services/User/id"
+import { useContext, useEffect } from "react";
+import { UserIdContext } from "../../contexts/User/id";
+import getUserById from "../../services/User/id";
+import { Container } from "../UI";
+import {
+  ButtonTask,
+  ItemTask,
+  List,
+  ListItem,
+  ListTask,
+  Task,
+  TaskName,
+  TitleUserId,
+  Username,
+} from "./styles";
 
-export default function UserId({id}) {
+export default function UserId({ id }) {
+  const { userInfo, setUserInfo } = useContext(UserIdContext);
 
-    const {userInfo, setUserInfo} = useContext(UserIdContext)
+  useEffect(() => {
+    // api request, getting user by id //
 
+    try {
+      console.log("loading");
+      getUserById(id).then((res) => setUserInfo(res));
+    } catch (error) {
+      console.log(error);
+    } finally {
+      console.log("loading off");
+    }
+  }, [id]);
 
-    useEffect(()=>{
+  console.log(userInfo);
 
-        // api request, getting user by id //
+  // show the task //
 
-        try {
+  function handleTask(e) {
+    const task = e.target.nextElementSibling;
+    const button = e.target;
+   
 
-            console.log('loading')
-            getUserById(id).then(res => setUserInfo(res))
-        }
+    console.log(button);
+    if (task.classList.contains("showTask")) {
+      task.classList.remove("showTask");
+      button.textContent = "▼";
+    } else {
+      task.classList.add("showTask");
+      button.textContent = "▲";
+    }
+  }
 
-        catch(error) {
-
-            console.log(error)
-        }
-        finally{
-
-            console.log('loading off' )
-        }
-
-    }, [id])
-
-    console.log(userInfo)
-
-
-    return(
-
-        <div>
-                {userInfo?.map((task) =>{
-
-                   return (
-
-                    <li>
-                            <h2>{task.title}</h2>
-                            <p>{task.body}</p>
-
-                    </li>
-                   )
-
-                })}
-        </div>
-    )
+  return (
+    <Container>
+      <TitleUserId> Tarefas do usuário {id}: </TitleUserId>
+      <ListTask>
+        {userInfo?.map((task) => {
+          return (
+            <ItemTask>
+              <TaskName>{task.title} </TaskName>
+              <ButtonTask
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleTask(e);
+                }}
+              >
+                ▼
+              </ButtonTask>
+              <Task>{task.body}</Task>
+            </ItemTask>
+          );
+        })}
+      </ListTask>
+    </Container>
+  );
 }

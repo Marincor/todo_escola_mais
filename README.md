@@ -4,7 +4,7 @@
 
 
 
-☰ <a href="https://github.com/Marincor/todo_escola_mais/#-responsividade"> Responsividade </a> | <a href="https://github.com/Marincor/todo_escola_mais/#-sobre"> Sobre </a> | <a href="https://github.com/Marincor/todo_escola_mais/#-funcionalidades"> Funcionalidades </a> | <a href="https://github.com/Marincor/todo_escola_mais/#-tecnologias-usadas"> Tecnologias usadas </a>
+☰ <a href="https://github.com/Marincor/todo_escola_mais/#-responsividade"> Responsividade </a> | <a href="https://github.com/Marincor/todo_escola_mais/#-sobre"> Sobre </a> | <a href="https://github.com/Marincor/todo_escola_mais/#-funcionalidades"> Funcionalidades </a> | <a href="https://github.com/Marincor/todo_escola_mais/#-tecnologias-usadas"> Tecnologias usadas </a> | <a href="https://github.com/Marincor/todo_escola_mais/#%EF%B8%8F-estrutura"> Estrutura </a> | <a href="https://github.com/Marincor/todo_escola_mais/#-instru%C3%A7%C3%B5es"> Instruções </a>
 
 <hr/>
 

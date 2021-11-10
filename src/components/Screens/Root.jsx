@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import LogoImg from "./../../assets/img/logo.png";
 import TodoImg from "./../../assets/img/to do.jpg";
 import { Header, Icon, Logo } from "../UI";
+import Page404Screens from "./Page404";
 
 export default function ScreensRoot() {
   return (
@@ -18,6 +19,7 @@ export default function ScreensRoot() {
         <Routes>
           <Route exact path="/" element={<ScreensUserList />} />
           <Route exact path="/user/:id" element={<ScreensUserId />} />
+          <Route path="*" element={<Page404Screens/>} />
         </Routes>
       </Router>
     </>

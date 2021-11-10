@@ -1,4 +1,5 @@
 import { useContext, useEffect } from "react";
+import { LoadingContext } from "../../contexts/Loading";
 import { UserIdContext } from "../../contexts/User/id";
 import { NewTaskUserContext } from "../../contexts/User/newTask";
 import handleNewTask from "../../functions/handleNewTask";
@@ -21,6 +22,8 @@ import {
 } from "./styles";
 
 export default function UserId({ id }) {
+
+  const {setLoading} = useContext(LoadingContext)
   // context of task's of current user //
   const { userInfo, setUserInfo } = useContext(UserIdContext);
 
@@ -33,12 +36,16 @@ export default function UserId({ id }) {
     // api request, getting user by Id //
 
     try {
-      console.log("loading");
+     
       getUserById(id).then((res) => setUserInfo(res));
     } catch (error) {
       console.log(error);
     } finally {
-      console.log("loading off");
+
+      setTimeout(() => {
+        
+        setLoading(false)
+      }, 2000);
     }
   }, [id]);
 

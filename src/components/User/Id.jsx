@@ -1,8 +1,10 @@
 import { useContext, useEffect } from "react";
 import { UserIdContext } from "../../contexts/User/id";
 import { NewTaskUserContext } from "../../contexts/User/newTask";
+import handleNewTask from "../../functions/handleNewTask";
+import handleTask from "../../functions/handleTask";
+import taskStatus from "../../functions/taskStatus";
 import getUserById from "../../services/User/id";
-import createTask from "../../services/User/newTask";
 import { Container } from "../UI";
 import {
   ButtonDone,
@@ -19,11 +21,16 @@ import {
 } from "./styles";
 
 export default function UserId({ id }) {
+  // context of task's of current user //
   const { userInfo, setUserInfo } = useContext(UserIdContext);
+
+  // context of new task //
   const { task, setTask } = useContext(NewTaskUserContext);
 
+  console.log(userInfo);
+
   useEffect(() => {
-    // api request, getting user by id //
+    // api request, getting user by Id //
 
     try {
       console.log("loading");
@@ -35,69 +42,13 @@ export default function UserId({ id }) {
     }
   }, [id]);
 
-  // show the task //
-
-  function handleTask(e) {
-    const task = e.target.nextElementSibling;
-    const button = e.target;
-
-    if (task.classList.contains("showTask")) {
-      task.classList.remove("showTask");
-      button.textContent = "▼";
-    } else {
-      task.classList.add("showTask");
-      button.textContent = "▲";
-    }
-  }
-
-  // mark the task //
-
-  function taskStatus(e) {
-    const taskTitle = e.target.nextElementSibling;
-    const task =
-      e.target.nextElementSibling.nextElementSibling.nextElementSibling;
-    const button = e.target;
-
-    if (taskTitle.classList.contains("done")) {
-      taskTitle.classList.remove("done");
-      task.classList.remove("done");
-      button.textContent = "concluir ✓";
-      button.classList.remove("undoneButton");
-    } else {
-      taskTitle.classList.add("done");
-      task.classList.add("done");
-      button.textContent = "pendenciar !";
-      button.classList.add("undoneButton");
-    }
-  }
-
-  // create task //
-
-  function handleTask() {
-    createTask(task.title, task.body, task.id).then((json) => {
-      alert("Tarefa criada, cheque o console para confirmar!");
-
-      console.log(json);
-    });
-
-    const inputTitle = document.querySelector(`[data-input-title]`);
-    const inputBody = document.querySelector(`[data-input-body]`);
-
-    setTimeout(() => {
-      inputTitle.value = "";
-      inputBody.value = "";
-    }, 100);
-
-    console.log(inputTitle);
-  }
-
   return (
     <Container>
       <form
         onSubmit={(e) => {
           e.preventDefault();
 
-          handleTask();
+          handleNewTask(task);
         }}
       >
         <Fieldset>

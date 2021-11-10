@@ -4,12 +4,17 @@ import getUserById from "../../services/User/id";
 import { Button, Container } from "../UI";
 import {
   ButtonDone,
+  ButtonForm,
   ButtonTask,
+  Fieldset,
+  Form,
+  Input,
   ItemTask,
+  Legend,
   ListTask,
   Task,
   TaskName,
-  TitleUserId
+  TitleUserId,
 } from "./styles";
 
 export default function UserId({ id }) {
@@ -46,61 +51,53 @@ export default function UserId({ id }) {
     }
   }
 
-
   // mark the task //
 
   function taskStatus(e) {
-
     const taskTitle = e.target.nextElementSibling;
-    const task = e.target.nextElementSibling.nextElementSibling.nextElementSibling;
+    const task =
+      e.target.nextElementSibling.nextElementSibling.nextElementSibling;
     const button = e.target;
 
-  
-  
-
-    if(taskTitle.classList.contains("done")) {
-
+    if (taskTitle.classList.contains("done")) {
       taskTitle.classList.remove("done");
       task.classList.remove("done");
-      button.textContent = "concluído ✓";
+      button.textContent = "concluir ✓";
       button.classList.remove("undoneButton");
-
-    } else{
-
+    } else {
       taskTitle.classList.add("done");
       task.classList.add("done");
-      button.textContent = "pendente !";
+      button.textContent = "pendenciar !";
       button.classList.add("undoneButton");
     }
 
-    console.log(taskTitle)
-
+    console.log(taskTitle);
   }
 
   return (
     <Container>
+      <form>
+        <Fieldset>
+          <Legend>Adicionar nova tarefa</Legend>
+
+          <Input type="text" placeholder="Título" />
+          <Input type="text" placeholder="Descrição" />
+          <ButtonForm>Criar</ButtonForm>
+        </Fieldset>
+      </form>
       <TitleUserId> Tarefas do usuário {id}: </TitleUserId>
-        <form>
-            <fieldset>
-              <legend>Adicionar nova tarefa</legend>
-
-              <input type="text" placeholder="Título" />
-              <input type="text" placeholder="Descrição" />
-              <button>criar</button>
-            </fieldset>
-
-        </form>
       <ListTask>
         {userInfo?.map((task) => {
           return (
             <ItemTask>
-              <ButtonDone onClick={(e)=>{e.preventDefault(); taskStatus(e)}}>
-                
-                
-                concluído ✓
-
-                
-                </ButtonDone>
+              <ButtonDone
+                onClick={(e) => {
+                  e.preventDefault();
+                  taskStatus(e);
+                }}
+              >
+                concluir ✓
+              </ButtonDone>
               <TaskName>{task.title}</TaskName>
 
               <ButtonTask

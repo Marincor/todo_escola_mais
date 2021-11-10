@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Button } from "../UI";
 
 export const TitleUserList = styled.h2`
   font-size: 2rem;
@@ -154,4 +155,53 @@ export const ButtonDone = styled.button`
   :hover {
     background-color: lightgreen;
   }
+`;
+
+// form //
+
+export const Fieldset = styled.fieldset`
+margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  flex-wrap: wrap;
+`;
+
+export const Legend = styled.legend `
+
+
+font-size: 1.2rem;
+font-weight: bold;
+font-family: "Raleway", sans-serif;
+
+
+`
+
+export const Input = styled.input`
+  background-color: rgb(47, 51, 141);
+  width: 35%;
+  border-radius: 2rem;
+  padding: 1rem;
+  margin: 1rem;
+  font-family: "Raleway", sans-serif;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  outline: none;
+
+  ::placeholder {
+    color: darkgray;
+  }
+
+  :hover {
+    border-color: #d8308a;
+  }
+  :focus {
+    border-color: #d8308a;
+  }
+`;
+
+export const ButtonForm = styled(Button)`
+width: 40%;
+  margin: 1rem;
 `;

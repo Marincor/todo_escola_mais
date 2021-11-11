@@ -18,16 +18,16 @@ export default function UserList() {
 
   return (
     <Container>
-      <TitleUserList>Lista de usuários:</TitleUserList>
+      <TitleUserList data-cy="titleList">Lista de usuários:</TitleUserList>
 
       <List>
         {arrUsers.map((user, index) => {
           return (
             <ListItem key={`user - ${index}`}>
-              <Username> 👤 Usuário {index + 1}</Username>
+              <Username data-cy="username"> 👤 Usuário {index + 1}</Username>
 
-              <Link className="link" to={`/user/${index + 1}`}>
-                <Button>Tarefas do usuário</Button>
+              <Link className="link" to={`/user/${index + 1}`} data-cy="linkButton">
+                <Button >Tarefas do usuário</Button>
               </Link>
             </ListItem>
           );

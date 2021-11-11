@@ -12,7 +12,7 @@ export default function ScreensRoot() {
       <Router>
         <Header>
           <a href="/">
-            <Logo src={LogoImg} alt="escola_mais-icon" title="escola mais" />
+            <Logo src={LogoImg} alt="escola_mais-icon" title="escola mais" data-cy="logo" />
             <Icon src={TodoImg} alt="toDo-icon" />
           </a>
         </Header>

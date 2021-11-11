@@ -53,10 +53,11 @@ export default function UserId({ id }) {
         }}
       >
         <Fieldset>
-          <Legend>Adicionar nova tarefa</Legend>
+          <Legend data-cy="legendForm">Adicionar nova tarefa</Legend>
 
           <Input
             data-input-title
+            data-cy="title"
             type="text"
             placeholder="Título"
             title="Escreva um título para sua tarefa"
@@ -68,6 +69,7 @@ export default function UserId({ id }) {
           />
           <Input
             data-input-body
+            data-cy="body"
             type="text"
             placeholder="Descrição"
             title="Escreva uma descrição para sua tarefa"
@@ -77,7 +79,7 @@ export default function UserId({ id }) {
               setTask({ ...task, body: e.target.value, id: +id });
             }}
           />
-          <ButtonForm>Criar</ButtonForm>
+          <ButtonForm data-cy="buttonNewTask">Criar</ButtonForm>
         </Fieldset>
       </form>
       <TitleUserId> Tarefas do usuário {id}: </TitleUserId>
@@ -90,20 +92,22 @@ export default function UserId({ id }) {
                   e.preventDefault();
                   taskStatus(e);
                 }}
+                data-cy="done"
               >
                 concluir ✓
               </ButtonDone>
-              <TaskName>{task.title}</TaskName>
+              <TaskName data-cy="taskList">{task.title}</TaskName>
 
               <ButtonTask
                 onClick={(e) => {
                   e.preventDefault();
                   handleTask(e);
                 }}
+                data-cy="buttonTask"
               >
                 ▼
               </ButtonTask>
-              <Task>{task.body}</Task>
+              <Task  data-cy="taskBody">{task.body}</Task>
             </ItemTask>
           );
         })}

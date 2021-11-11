@@ -69,7 +69,8 @@ Alguns pontos:
 # 🗺️ Estrutura 
 
 
-![Mind Map - Frame 1 (1)](https://user-images.githubusercontent.com/84210050/141203549-9d500250-f7be-4c4f-ab3e-3b81334ce034.jpg)
+![Mind Map - Frame 1 (2)](https://user-images.githubusercontent.com/84210050/141238270-c3464c3e-cac2-4342-bdcb-3db285d670ec.jpg)
+
 
 
 # <img src="https://user-images.githubusercontent.com/84210050/141196999-85230390-c3dd-4e69-b0e0-05d1a07cfbed.png" alt="instruction-icon" width="30px" /> Instruções
@@ -85,3 +86,17 @@ Alguns pontos:
 4 - execute a aplicação com o comando: <code>npm start</code> ou <code>yarn start</code>
 
 5 - caso a aplicação não abra automaticamente, entre no endereço a seguir: http://localhost:3000/
+
+6 - 🧪 Testes
+ 
+  Testes realizados utilizando Cypress:
+  - Renderização de componentes;
+  - Execução dos botões;
+  - Requests dos métodos GET e Post para a API.
+  
+  > Com o projeto já clonado na maquina local, digite os comandos: <code>yarn start</code> e em seguida <code>yarn cypress open</code>;
+  > A tela de gerenciamento do Cypress abrirá, com isso, no menu "Integration Tests" selecione o teste que deseja rodar ou clique em "Run 3 integration specs" para rodar todos de uma vez.
+  > ![image](https://user-images.githubusercontent.com/84210050/141237725-0cd1f532-b047-4a17-a835-87373a335f58.png)
+  > ![image](https://user-images.githubusercontent.com/84210050/141237561-a3ad0c1e-7e1a-4574-98a7-85499665778d.png)
+
+
